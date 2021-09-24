@@ -52,13 +52,13 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    req.session.save(() => {
+
       req.session.loggedIn = true;
+      req.session.userId = dbUserData.id;
 
       res
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
-    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
