@@ -12,12 +12,12 @@ Habit.belongsTo(User, {
 });
 
 Log.belongsTo(User, {
-  foreignKey: "user_ID",
+  foreignKey: "user_id",
   onDelete: "cascade",
 });
 
 Log.belongsTo(Habit, {
-  foreignKey: "habit_ID",
+  foreignKey: "habit_id",
   onDelete: "cascade",
 });
 
@@ -27,7 +27,7 @@ User.hasMany(Log, {
 });
 
 Habit.hasMany(Log, {
-  foreignKey: "habit_ID",
+  foreignKey: "habit_id",
   onDelete: "cascade",
 });
 

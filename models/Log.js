@@ -12,34 +12,34 @@ Log.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_ID: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
         key: "id",
       },
     },
-  habit_ID: {
-  type: DataTypes.INTEGER,
-    references: {
-    model: "habit",
-      key: "id",
+    habit_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "habit",
+        key: "id",
       },
     },
-      entryDate: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      status: {
-        type: DataTypes.STRING,
-      },
+    entry_date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
+  },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "post",
+    modelName: "Log",
   }
 );
 
