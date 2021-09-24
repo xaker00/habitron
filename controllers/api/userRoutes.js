@@ -9,11 +9,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     // create user in database
-    const dbUserData = await User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const dbUserData = await User.create(req.body);
     // set the session flag
     req.session.loggedIn = true;
     req.session.userId = dbUserData.id;
