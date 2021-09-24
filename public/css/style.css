@@ -1,0 +1,163 @@
+.dashboard-container {
+  width: 80%;
+  margin: 50px auto;
+  background: #fff;
+  padding: 15px;
+}
+
+.dashboard-header {
+  height: 30px;
+  line-height: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+.dashboard-content {
+  padding-top: 15px;
+}
+
+.dashboard-row {
+  height: 75px;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashboard-row:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.dashboard-category {
+  width: 15%;
+  float: left;
+  line-height: 34px;
+}
+
+a {
+  padding: 5px;
+}
+
+.priority.Healthy a {
+  background: rgb(136, 164, 255);
+}
+
+.priority.Exercise a {
+  background: #8f8;
+}
+
+.priority.RestStress a {
+  background: rgb(255, 255, 255);
+}
+
+.priority.SelfCare a {
+  background: rgb(233, 255, 136);
+}
+
+.habit-title {
+  width: 45%;
+  float: left;
+}
+
+.habit-title h4 {
+  color: #555;
+  font-weight: bold;
+}
+.habit-title h5 {
+  color: #999;
+}
+
+.habit-progress {
+  width: 20%;
+  float: left;
+  height: 34px;
+}
+
+.habit-bar {
+  float: left;
+  height: 20px;
+  width: 90%;
+  padding: 7px 0;
+}
+
+.habit-track {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #ebebeb;
+  border-radius: 3px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+.status-fill {
+  position: relative;
+  background: #8CE2FF;
+  border-radius: 3px;
+  height: 20px;
+  width: 50%; /*default*/
+  box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+}
+
+.habit-track {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px; /* sketchy center-it: 50% -->  then 1/2 width <--  */
+  color: #656565;
+  text-align: center;
+  font-family: "Lato","Verdana",sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: bold;
+  z-index: 100;
+  display: inline-block;
+  width: 40px;
+}
+
+.habit-progress {
+  width: 20%;
+  float: left;
+  height: 34px;
+  line-height: 34px;
+}
+
+.habit-progress a {
+  font-size: 12px;
+  color: #555;
+  font-weight: bold;
+}
+
+.habit-progress small {
+  color: #999;
+  font-weight: normal;
+}
+
+/* Tooltips */
+
+.tooltip{
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover:after{
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  content: attr(tooltip);
+  left: 20%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 220px;
+}
+
+.tooltip:hover:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
+}
