@@ -1,9 +1,20 @@
+const withAuth = require("../utils/auth");
+
 const router = require("express").Router();
 
-// Prevent non logged in users from viewing the homepage
+// landing page
 router.get("/", async (req, res) => {
-  res.status(200).json({ message: "hello world" });
+  res.render("home", {page:'home'});
 });
 
+// App (protected route)
+router.get("/app", withAuth, async (req, res) => {
+    res.render('app', {page:'app'});
+});
+
+// login page
+router.get("/login", async (req, res) => {
+    res.render('login', {page:'login'});
+  });
 
 module.exports = router;
