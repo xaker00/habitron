@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS habitron_db;
+CREATE DATABASE habitron_db;

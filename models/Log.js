@@ -1,0 +1,46 @@
+const { Model, DataTypes } = require("sequelize");
+const bcrypt = require("bcrypt");
+const sequelize = require("../config/connection");
+
+class Log extends Model {}
+
+Log.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    user_ID: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+  habit_ID: {
+  type: DataTypes.INTEGER,
+    references: {
+    model: "habit",
+      key: "id",
+      },
+    },
+      entryDate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },
+      status: {
+        type: DataTypes.STRING,
+      },
+    },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "post",
+  }
+);
+
+module.exports = Log;
