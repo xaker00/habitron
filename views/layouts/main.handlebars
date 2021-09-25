@@ -16,7 +16,9 @@
                 <li><a href={{../home}}>Home</a></li>
                 <li><a href={{../habit}}>Habit Tracker</a></li>
                 <li><a href={{../dashboard}}>Dashboard</a></li>
-                {{#if !loggedIn}}
+                {{#if loggedIn}}
+                <li><a href={{!-- Logout Page? --}}>Logout</a></li>
+                {{else}}
                 <li><a href={{../login}}>Login</a></li>
                 {{else}}
                 <li><a href={{ {{!-- Logout Page? --}} }}>Logout</a></li>
