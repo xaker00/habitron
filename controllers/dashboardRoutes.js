@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models");
-const withAuth = require("../utils/auth");
+const {withAuth} = require("../utils/auth");
 
 //show all the habit
 router.get("/", withAuth, async (req, res) => {
