@@ -9,24 +9,28 @@
     <title>HABITRON</title>
 </head>
 
-    <article>
-        <header>HABITRON: Habit Tracker</header>
+    <header>
         <nav class="menu">
-            <ul>
-                <li><a href={{../home}}>Home</a></li>
-                <li><a href={{../habit}}>Habit Tracker</a></li>
-                <li><a href={{../dashboard}}>Dashboard</a></li>
-                {{#if loggedIn}}
-                <li><a href={{!-- Logout Page? --}}>Logout</a></li>
-                {{else}}
-                <li><a href={{../login}}>Login</a></li>
-                {{/if}}
-            </ul>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">HABIRTON: Habit Tracker</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href={{../home}}>Home</a></li>
+                    <li><a href={{../habit}}>Habit Tracker</a></li>
+                    <li><a href={{../dashboard}}>Dashboard</a></li>
+                    {{#if loggedIn}}
+                    <li><a href={{!-- Logout Page? --}}>Logout</a></li>
+                    {{else}}
+                    <li><a href={{../login}}>Login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
         </nav>
-    </article>
+    </header>
 
 <body>
 {{{body}}}
 </body>
 
-
+    <footer>
+        Created by: Ilya, Victor, and Steven
+    </footer>
