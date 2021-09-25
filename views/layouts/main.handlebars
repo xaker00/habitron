@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <title>HABITRON</title>
 </head>
+
+    <article>
+        <header>HABITRON: Habit Tracker</header>
+        <nav class="menu">
+            <ul>
+                <li><a href={{../home}}>Home</a></li>
+                <li><a href={{../habit}}>Habit Tracker</a></li>
+                <li><a href={{../dashboard}}>Dashboard</a></li>
+                {{#if !loggedIn}}
+                <li><a href={{../login}}>Login</a></li>
+                {{else}}
+                <li><a href={{ {{!-- Logout Page? --}} }}>Logout</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </article>
+
 <body>
 {{{body}}}
 </body>
-</html>
+
+
