@@ -14,6 +14,7 @@
   </div>
   <div class="block-content">
     {{#each habits}}
+        <li>{{ description}}</li>
       <div class="dashboard-content">
         <div class="dashboard-row">
           <div class="dashboard-category {{category}}">
@@ -33,7 +34,7 @@
           <div class="habit-progress"><a
               tooltip="Completion Rate ( Completed day / Total day )"
               class="tooltip"
-            > <small>( {{timeUsed}} / {{timeTotal}} )</small></a></div>
+            > <small>( {{completed_day}} / {{total_day}} )</small></a></div>
         </div>
       </div>
     {{/each}}
