@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const {withAuthApi} = require("../../utils/auth");
+const { withAuthApi } = require("../../utils/auth");
 const { Habit } = require("../../models");
+const session = require("express-session");
 
 // list all habits for user
 router.get("/", withAuthApi, async (req, res) => {
@@ -18,7 +19,7 @@ router.get("/", withAuthApi, async (req, res) => {
 // add new habit
 router.post("/", withAuthApi, async (req, res) => {
   try {
-    const dbHabitData = await Habit.create(req.body);
+    const dbHabitData = await Habit.create({user_id:req.session.userId ,...req.body});
     res.status(201).json(dbHabitData);
   } catch (err) {
     console.log(err);
@@ -29,14 +30,17 @@ router.post("/", withAuthApi, async (req, res) => {
 // edit habit
 router.put("/:id", withAuthApi, async (req, res) => {
   try {
-    const [count, dbHabitData] = await Habit.update(req.body, {
-      where: { id: req.params.id },
+    const count = await Habit.update(req.body, {
+      where: { id: req.params.id, userId:req.session.userId },
     });
     if (count === 0) {
       res.status(404).json({ message: "Not found" });
       return;
     }
-    res.status(201).json(dbHabitData);
+    // mysql does not return data on update, so we have to get it manually 😞
+    const dbHabitData = await Habit.findAll({ where: { id: req.params.id } });
+    console.log(dbHabitData);
+    res.status(200).json(dbHabitData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
