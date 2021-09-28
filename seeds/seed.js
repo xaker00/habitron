@@ -29,7 +29,7 @@ const seedDatabase = async () => {
       await Log.create({
         ...log,
         user_id: users[Math.floor(Math.random() * users.length)].id,
-        habit_ID: habits[Math.floor(Math.random() * habits.length)].id,
+        habit_id: habits[Math.floor(Math.random() * habits.length)].id,
       })
     );
   }

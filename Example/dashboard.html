@@ -1,5 +1,16 @@
 
-<!-- Template 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="../public/css/style.css" rel="stylesheet" />
+    <title>HABITRON</title>
+</head>
+<body>
+    <!-- Template 
   habits
             category: "Exercise"
             title: "Running",
@@ -9,19 +20,19 @@
             total_day: 6
 -->
  <div class="dashboard-container">
-        <div class="dashboard-header">
+        <div class="dashboard-header center-align ">
             <h3>My Habit Tracker</h3>
         </div>
-        <div class="dashboard-content">
-            <div class="dashboard-row">
-                <div class="dashboard-category  {{category}}">
-                    <a tooltip="Category" class="category">Exercise</a>
+      <div class="card dashboard-content">
+            <div class="card-body dashboard-row">
+                <div class="card-content dashboard-category  {{category}}">
+                    <!-- <a tooltip="Category" class="category">Exercise</a> -->
                 </div>
-                <div class="habit-title">
+                <div class="card-content habit-title row">
                     <h4>Running</h4>
                     <h5>Run for 60 mins every day</h5>
                 </div>
-                <div class="habit-progress">
+                <div class="card-content habit-progress">
                     <div class="habit-bar">
                         <div class="habit-track">
                             <span class="status-text">10%</span>
@@ -29,7 +40,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="habit-progress"><a tooltip="Completion Rate ( Completed day / Total day )" class="tooltip"> <small>( {{completed_day}} / {{total_day}} )</small></a></div>
+                <div class="card-contenthabit-progress"><a tooltip="Completion Rate ( Completed day / Total day )" class="tooltip"> <small>( {{completed_day}} / {{total_day}} )</small></a></div>
             </div>
         </div>
-    </div>
+</div>
+</body>

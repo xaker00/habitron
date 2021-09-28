@@ -28,5 +28,35 @@
     "category": "Self Care",
     "description": "Consume Water",
     "status": "Active"
+  },
+  {
+    "category": "Healthy",
+    "description": "Lunch at noon",
+    "status": "Active"
+  },
+  {
+    "category": "Healthy",
+    "description": "Dinner at 6pm",
+    "status": "Active"
+  },
+  {
+    "category": "Exercise",
+    "description": "Run for an hour",
+    "status": "Active"
+  },
+  {
+    "category": "Rest & Stress",
+    "description": "Wake up at 8AM",
+    "status": "Active"
+  },
+  {
+    "category": "Rest & Stress",
+    "description": "Sleep at 8PM",
+    "status": "Active"
+  },
+  {
+    "category": "Self Care",
+    "description": "Consume Water",
+    "status": "Active"
   }
 ]

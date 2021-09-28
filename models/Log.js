@@ -14,6 +14,7 @@ Log.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "user",
         key: "id",
@@ -21,6 +22,7 @@ Log.init(
     },
     habit_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: "habit",
         key: "id",
