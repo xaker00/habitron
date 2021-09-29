@@ -26,7 +26,7 @@
   padding: 15px;
 }
 
-.dashboard-header {
+.dashboard-header .overview .chart{
   line-height: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
