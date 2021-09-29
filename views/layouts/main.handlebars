@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 
     <title>HABITRON</title>
 </head>
@@ -12,15 +13,15 @@
     <header>
         <nav class="menu">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">HABIRTON: Habit Tracker</a>
+                <a href="#" class="brand-logo">HABITRON: Habit Tracker</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href={{../home}}>Home</a></li>
-                    <li><a href={{../habit}}>Habit Tracker</a></li>
-                    <li><a href={{../dashboard}}>Dashboard</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/app">Habit Tracker</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                     {{#if loggedIn}}
                     <li><a href={{!-- Logout Page? --}}>Logout</a></li>
                     {{else}}
-                    <li><a href={{../login}}>Login</a></li>
+                    <li><a href="/login">Login</a></li>
                     {{/if}}
                 </ul>
             </div>
@@ -31,6 +32,6 @@
 {{{body}}}
 </body>
 
-    <footer>
-        Created by: Ilya, Victor, and Steven
-    </footer>
+<footer>
+    Created by: Ilya, Victor, and Steven
+</footer>

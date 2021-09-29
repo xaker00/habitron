@@ -8,8 +8,13 @@ router.get("/", async (req, res) => {
 });
 
 // App (protected route)
-router.get("/app", withAuth, async (req, res) => {
-    res.render('app', {page:'app'});
+// router.get("/app", withAuth, async (req, res) => {
+//     res.render('app', {page:'app'});
+// });
+
+// dashboard page
+router.get("/dashboard", withAuth, async (req, res) => {
+  res.render('dashboard', {page:'dashboard'});
 });
 
 // login page
