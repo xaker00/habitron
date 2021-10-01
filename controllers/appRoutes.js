@@ -35,6 +35,9 @@ router.get("/", withAuth, async (req, res) => {
         const habits = habitData.map((habit) => habit.get({ plain:true }));
         const logs = logData.map((log) => log.get({ plain:true }));
 
+        // get 2d array of dates and habits
+        const log2 = await Log.getHistory(req.session.userId, req.clientDate, 7);
+
 
         console.log(habits);
         console.log(logs);
@@ -45,7 +48,7 @@ router.get("/", withAuth, async (req, res) => {
             logged_in: req.session.logged_in,
         });
     }catch (err) {
-        res.status(500).json(err);
+        res.status(500).json(err.message);
     }
 });     
 
