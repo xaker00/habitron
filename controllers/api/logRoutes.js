@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { withAuthApi } = require("../../utils/auth");
 const { Log, Habit } = require("../../models");
-const session = require("express-session");
 const Op = require("sequelize").Op;
 
 // get log entries for currently logged in user
@@ -34,15 +33,9 @@ router.post("/", withAuthApi, async (req, res) => {
     }
 
 
-    const TODAY_START = new Date().setHours(0, 0, 0, 0);
-    const NOW = new Date();
-
     const existingLog = await Log.findOne({
       where: {
-        created_at: {
-          [Op.gt]: TODAY_START,
-          [Op.lt]: NOW,
-        },
+        entry_date: req.body.entry_date,
         habit_id: req.body.habit_id,
         user_id: req.session.userId,
       },
@@ -58,10 +51,7 @@ router.post("/", withAuthApi, async (req, res) => {
       });
       const dbLogData = await Log.findOne({
         where: {
-          created_at: {
-            [Op.gt]: TODAY_START,
-            [Op.lt]: NOW,
-          },
+          entry_date: req.body.entry_date,
           habit_id: req.body.habit_id,
           user_id: req.session.userId,
         },
