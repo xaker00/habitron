@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
     // set the session flag
     req.session.loggedIn = true;
     req.session.userId = dbUserData.id;
+    req.session.tzOffsetMs = +req.body.tzOffsetMs;
     // reply to client
     res.status(200).json(dbUserData);
   } catch (err) {
@@ -52,6 +53,7 @@ router.post("/login", async (req, res) => {
 
       req.session.loggedIn = true;
       req.session.userId = dbUserData.id;
+      req.session.tzOffsetMs = +req.body.tzOffsetMs;
 
       res
         .status(200)

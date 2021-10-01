@@ -21,7 +21,7 @@ document
 
 
 // add event listener to habit checkboxes
-$(".habit-list").on("click", ":checkbox", (event) => {
+$(".habit-grid").on("click", ":checkbox", (event) => {
   console.log(event);
   onHabitCheckboxChange(event);
 });
