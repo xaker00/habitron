@@ -52,5 +52,3 @@ module.exports = {
       return six;
     },
   };
-  
->>>>>>> origin/steven-branch
