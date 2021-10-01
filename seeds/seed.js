@@ -40,6 +40,18 @@ const seedDatabase = async () => {
     );
   }
 
+  for (const log of logData) {
+    logs.push(
+      await Log.create({
+        ...log,
+        entry_date: randomDate(new Date(2021, 9, 1), new Date()),
+        user_id: users[Math.floor(Math.random() * users.length)].id,
+        habit_id: habits[Math.floor(Math.random() * habits.length)].id,
+      })
+    );
+  }
+  
+
   process.exit(0);
 };
 

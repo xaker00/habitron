@@ -20,7 +20,7 @@
         </div>
         <div class="card-content">
           <div class="row">
-            <h3 class="card-stats-number">{{LogData.length}}</h3>
+            <h3 class="card-stats-number">{{Logs.length}}</h3>
             <p>Total Entry</p>
           </div>
         </div>
@@ -29,11 +29,13 @@
     <div class="col l3 m6 s12 card-body">
       <div class="card-content orange white-text valign-wrapper">
         <div class="card-content orange darken-2 icon valign-wrapper">
-          <i class="material-icons medium valign">check</i>
+          <i class="material-icons medium valign">task</i>
         </div>
         <div class="card-content">
           <div class="row">
-            <h3 class="card-stats-number">50</h3>
+            <h3 class="card-stats-number">
+              {{#if DateCount}} {{DateCount}}{{else}}0{{/if}}
+            </h3>
             <p>Days Track</p>
           </div>
         </div>
@@ -42,12 +44,14 @@
     <div class="col l3 m6 s12 card-body">
       <div class="card-content red white-text valign-wrapper">
         <div class="red darken-2 icon valign-wrapper">
-          <i class="material-icons medium valign">mood_bad</i>
+          <i class="material-icons medium valign">done_all</i>
         </div>
         <div class="card-content">
           <div class="row">
-            <h3 class="card-stats-number">50</h3>
-            <p>Days Skipped</p>
+            <h3 class="card-stats-number">
+              {{#if ConsecutiveCount}}{{ConsecutiveCount}}{{else}}0{{/if}}
+            </h3>
+            <p>Consecutive Days</p>
           </div>
         </div>
       </div>
@@ -65,23 +69,17 @@
   <div class="dashboard-container">
     <div class="block-content">
       {{#each habits}}
-        <div class="card">        
-            <div class="col s6 ">
-              <h5 class="grey-text habit-text">{{description}}</h5>
-            </div>
-            <div class="col s3 habit-progress">
-              {{!-- <div class="habit-bar">
-                <div class="habit-track">
-                  <span class="status-text">100%</span>
-                  <div class="status-fill" style="width:80%"></div>
-                </div>
-              </div> --}}
-               <h5 class="grey-text habit-text">{{status}}</h5>
-            </div>
-            <div class="col s3 habit-completed">
-              {{!-- <div class="habit-progress"><small>100/100</small></div> --}}
-              <h5 class="grey-text">{{format_date created_at}}</h5>
-            </div>  
+        <div class="card">
+          <div class="col s6">
+            <h5 class="grey-text habit-text">{{description}}</h5>
+          </div>
+          <div class="col s3 habit-progress">
+            <h5 class="grey-text habit-text">{{status}}</h5>
+          </div>
+          <div class="col s3 habit-completed">
+            <h5 class="grey-text">Created at:
+              {{format_date_string created_at}}</h5>
+          </div>
         </div>
       {{/each}}
     </div>
