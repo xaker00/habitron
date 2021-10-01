@@ -1,7 +1,7 @@
 {{!-- This will be the file to add/update/edit habits that the user wants to track --}}
 <div class = "row">
-    <div class = " col s5 new-habit-spot">
-        <h4>Add A New Habit</h4>
+    <div class = "col s3 new-habit-spot">
+        <h4 class = "center-align">Add A New Habit</h4>
 
         <form class="form habit-form">
             {{!-- <div class="form-group">
@@ -10,17 +10,18 @@
             </div> --}}
             <div class="form-group">
                 <label for="new-habit">Habit:</label>
-                <input class="form-input" type="text" id="habit" />
+                <input class="input-field new-habit"  type="text"/>
             </div>
         </form>
+
     {{!-- {{#if habits.length}} --}}
     <div class="habit-list">
-        <h4>Active Habits:</h4>
-        {{#each habits}}
+        <h4 class="center-align">Active Habits:</h4>
+        {{#each logs}}
         <ul class="habit-description">
-            <li>{{description}}
+            <li>{{habit.description}}
             <label class ="right">
-                <input type="checkbox"/>
+                <input type="checkbox" id="{{habit.description}}"/>
                 <span>Active</span>
             </label>
             </li>
@@ -31,72 +32,77 @@
     </div>
 
 
-    <div class="col s7 center-align">
+    <div class="col s9 center-align">
         <h4>Habit Logging Grid</h4>
     
      <table class= "centered">
         <thead>
           <tr>
-              <th>Sunday</th>
-              <th>Monday</th>
-              <th>Tuesday</th>
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th>
-              <th>Saturday</th>
+              {{#with logs}}
+              <th id="{{entry_date}}">{{ format_date (dateSixDay) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateFiveDay) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateFourDay) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateThreeDay) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateTwoDay) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateYesterday) }}</th>
+              <th id="{{entry_date}}">{{ format_date (dateNow) }}</th>
+              {{/with}}
           </tr>
         </thead>
 
         <tbody>
-        {{#each habits}}    
-          <tr>
-            <td >
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{this.description}}</span>
-                </label>    
-            </td>
-           <td>
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
+        {{#each logs}}
+            <form action="#">
+            <tr>
+                <td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-6" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>
+                </td>
             <td>
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
-           <td>
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-5" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>  
+                </td>
+                <td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-4" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>
+                </td>
             <td>
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
-            <td>
-                <label>
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
-            <td>
-                <label class ="left">
-                    <input type="checkbox"/>
-                    <span>{{description}}</span>
-                </label>    
-            </td>
+                    <label class ="left checkbox">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-3" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label> 
+                </td>
+                <td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-2" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>
+                </td>
+                <td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-1" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>  
+                </td>
+                <td>
+                    <label class ="left status-box">
+                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="0" value="Complete"/>
+                        <span>{{habit.description}}</span>
+                    </label>
+                </td>
+            </form>     
         {{/each}}
           </tr>
         </tbody>
       </table>
     </div>
+
 </div>
 
 <script src="/js/app.js" > </script>
@@ -104,5 +110,5 @@
 
 
 
-    {{!-- {{ DO WE NEED A HABIT.JS?}} --}}
-    {{!-- <script src=""></script> --}} 
+
+<script src="./js/app.js"></script>

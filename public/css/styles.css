@@ -26,7 +26,7 @@
   padding: 15px;
 }
 
-.dashboard-header {
+.dashboard-header .overview .chart{
   line-height: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
@@ -147,4 +147,45 @@ a {
 .habit-progress small {
   color: #999;
   font-weight: normal;
+}
+
+/* Tooltips */
+
+.tooltip{
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover:after{
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  content: attr(tooltip);
+  left: 20%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  width: 220px;
+}
+
+.tooltip:hover:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
 }
