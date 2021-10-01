@@ -25,9 +25,9 @@
                     <li><a href="/app">Habit Tracker</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
                     {{#if loggedIn}}
-                    <li><a href={{!-- Logout Page? --}}>Logout</a></li>
+                        <li><a href="/" id="logout">Logout</a></li>
                     {{else}}
-                    <li><a href="/login">Login</a></li>
+                        <li><a href="/login">Login</a></li>
                     {{/if}}
                 </ul>
             </div>
@@ -42,3 +42,7 @@
 <footer class="footer">
     Created by: Ilya, Victor, and Steven
 </footer>
+
+ {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
