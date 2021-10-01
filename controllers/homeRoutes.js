@@ -13,9 +13,9 @@ router.get("/", async (req, res) => {
 // });
 
 // dashboard page
-router.get("/dashboard", withAuth, async (req, res) => {
-  res.render('dashboard', {page:'dashboard'});
-});
+// router.get("/dashboard", withAuth, async (req, res) => {
+//   res.render('dashboard', {page:'dashboard'});
+// });
 
 // login page
 router.get("/login", async (req, res) => {
