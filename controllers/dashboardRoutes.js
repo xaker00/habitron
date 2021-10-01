@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Habit, Log, User } = require("../models");
 const { withAuth } = require("../utils/auth");
+const sequelize = require("../config/connection");
 
 //show all the habit
 router.get("/", withAuth, async (req, res) => {
@@ -25,15 +26,13 @@ router.get("/", withAuth, async (req, res) => {
       where: { user_id: req.session.userId },
     });
     // count log date
-    const DateCount = await Log.findAll({
-      attributes: [
-         "entry_date"
-        //  [sequelize.literal("COUNT (DISTINCT (entry_date))"), "myCount"],
-        // [[Sequelize.fn("COUNT", Sequelize.col("entry_date.id")), "sensorCount"]] 
-      ],
-      where: { user_id: req.session.userId },
-    });
+   const DateCount = await sequelize.query(
+      `SELECT count(date(entry_date)) as count FROM log where user_id = ? group by date(entry_date)`
+    ,{replacements: [req.session.userId],})
+
+
     // Serialize data so the template can read it
+    console.log("end date count")
     const habits = habitData.map((habit) => habit.get({ plain: true }));
     console.log(DateCount);
     // Pass serialized data and session flag into template
