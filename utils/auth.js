@@ -3,6 +3,7 @@ const withAuth = (req, res, next) => {
   if (!req.session.loggedIn) {
     res.redirect("/login");
   } else {
+    calcClientDate(req);
     // If the user is logged in, execute the route function that will allow them to view the protected pages
     // We call next() if the user is authenticated
     next();
@@ -14,10 +15,22 @@ const withAuthApi = (req, res, next) => {
   if (!req.session.loggedIn) {
     res.status(401).json({ message: "Unauthorized - please log in" });
   } else {
+    calcClientDate(req);
     // If the user is logged in, execute the route function that will allow them to view the protected pages
     // We call next() if the user is authenticated
     next();
   }
 };
 
-module.exports = {withAuth, withAuthApi}
+/**
+ * Save date string as YYYY-MM-DD in req.clientDate
+ * @param {*} req 
+ */
+const calcClientDate = (req)=>{
+  let t = new Date();
+  req.clientDate = new Date(t - req.session.tzOffsetMs)
+    .toISOString()
+    .slice(0, 10);
+}
+
+module.exports = { withAuth, withAuthApi };

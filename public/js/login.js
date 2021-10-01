@@ -1,3 +1,7 @@
+// get user's timezone offset (will be stored in session)
+const t = new Date();
+const tzOffsetMs = t.getTimezoneOffset() * 60 * 1000;
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -9,7 +13,7 @@ const loginFormHandler = async (event) => {
     // Send a POST request to the API endpoint
     const response = await fetch("/api/users/login", {
       method: "POST",
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, tzOffsetMs }),
       headers: { "Content-Type": "application/json" },
     });
 
@@ -32,7 +36,7 @@ const signupFormHandler = async (event) => {
   if (name && email && password) {
     const response = await fetch("/api/users", {
       method: "POST",
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ name, email, password, tzOffsetMs }),
       headers: { "Content-Type": "application/json" },
     });
 
