@@ -17,12 +17,31 @@ router.get("/", withAuth, async (req, res) => {
             ],
         });
 
+        const logData = await Log.findAll({
+            where: {
+                user_id: req.session.userId,
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+                {
+                    model: Habit,
+                    attributes: ['description'],
+                },
+            ],
+        });
         const habits = habitData.map((habit) => habit.get({ plain:true }));
+        const logs = logData.map((log) => log.get({ plain:true }));
+
 
         console.log(habits);
+        console.log(logs);
 
         res.render('app', {
             habits: habits,
+            logs: logs,
             logged_in: req.session.logged_in,
         });
     }catch (err) {
