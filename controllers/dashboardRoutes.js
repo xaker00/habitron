@@ -23,11 +23,14 @@ router.get("/", withAuth, async (req, res) => {
     });
     //show all the log
     const LogData = await Log.findAll({
-      where: { user_id: req.session.userId },
+      where: {
+        user_id: req.session.userId,
+        status: "Done",
+      },
     });
     // count log date
     const DateCountData = await sequelize.query(
-      `SELECT count(date(entry_date)) as count FROM log where user_id = ? `,
+      `SELECT count(distinct date(entry_date)) as count FROM log where user_id = ? `,
       { replacements: [req.session.userId] }
     );
     // count consecutive date
