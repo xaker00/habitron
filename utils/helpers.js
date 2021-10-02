@@ -77,4 +77,10 @@ module.exports = {
     // Format date as MM/DD/YYYY
     return date.toLocaleDateString();
   },
+
+  hideGridColumn(i){
+    if(i >= 0 && i < 4)return ' hide-on-med-and-down ';
+    if(i >= 4 && i < 6)return ' hide-on-small-only ';
+    return ' ';
+  }
 };
