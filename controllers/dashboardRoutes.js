@@ -39,7 +39,7 @@ router.get("/", withAuth, async (req, res) => {
       SELECT COUNT(*) as CNT, min(dt) start_date, max(dt) as end_date
       FROM (SELECT DATE(entry_date) dt, DATE_ADD(DATE(entry_date), INTERVAL - ROW_NUMBER() OVER (ORDER BY entry_date) DAY) as col
       FROM log 
-      where user_id=1
+      where user_id=?
       GROUP BY entry_date 
       ORDER BY entry_date) B
       GROUP BY col
@@ -52,14 +52,20 @@ router.get("/", withAuth, async (req, res) => {
     const habits = habitData.map((habit) => habit.get({ plain: true }));
     const Logs = LogData.map((log) => log.get({ plain: true }));
     const DateCount = DateCountData[0][0].count;
-    const ConsecutiveCount = ConsecutiveCountData[0][0].CNT;
-   
+    const ConsecutiveCount = () => {
+      if (ConsecutiveCountData[0][0]) {
+        return ConsecutiveCountData[0][0].CNT;
+      } else {
+        return 0;
+      }
+    };
+
     // Pass serialized data and session flag into template
     res.render("dashboard", {
       habits,
       Logs,
       DateCount,
-      ConsecutiveCount,
+      // ConsecutiveCount,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
