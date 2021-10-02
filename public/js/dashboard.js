@@ -50,7 +50,7 @@ var myChart = new Chart(ctx, {
         label: "Total entry count by date",
         borderColor: "rgb(62,149,205)",
         backgroundColor: "rgb(62,149,205,0.1)",
-        borderWidth: 2,
+        borderWidth: 1,
       },
     ],
   },
