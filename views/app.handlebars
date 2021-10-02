@@ -12,18 +12,16 @@
                 <label for="new-habit">Habit:</label>
                 <input class="input-field new-habit"  type="text"/>
             </div>
+             <button class="btn btn-primary btn-post-add" type="submit">Add</button>
         </form>
 
     {{!-- {{#if habits.length}} --}}
     <div class="habit-list">
         <h4 class="center-align">Active Habits:</h4>
-        {{#each logs}}
+        {{#each habits}}
         <ul class="habit-description">
-            <li>{{habit.description}}
-            <label class ="right">
-                <input type="checkbox" id="{{habit.description}}"/>
-                <span>Active</span>
-            </label>
+            <li class="habit-delete">{{description}}
+                <button class="btn btn-primary btn-delete right red" id="{{id}}" type="button">Delete</button>
             </li>
         </ul>    
         {{/each}}

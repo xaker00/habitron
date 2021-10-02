@@ -152,8 +152,14 @@ display: flex;
   z-index: 99;
 }
 
+
+/* body{
+  min-height: 100%;
+  height: 100%;
+} */
+
 footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;

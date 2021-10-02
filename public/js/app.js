@@ -1,17 +1,41 @@
-//handles the new habit thing
+ // Collect values from the login form
 const newHabitHandler = async (event) => {
-    event.preventDefault();
-  
-    // Collect values from the login form
-    const habit = document.querySelector(".new-habit").value.trim();
-    console.log(habit);
-    
-    const response = await fetch("/api/habit", {
-        method: "POST",
-        body: JSON.stringify( { habit } ),
-        headers: { "Content-Type": "application/json" },
-      });
+  event.preventDefault();
+
+  // Collect values from the login form
+  const habit = document.querySelector(".new-habit").value.trim();
+  console.log(habit);
+
+  if (habit) {
+    const response = await fetch("/api/habits", {
+      method: "POST",
+      body: JSON.stringify({ habit }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response);
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  }
 };
+
+// Collect values from the login form
+const deleteHabitHandler = async (event) => {
+  console.log("DELETE HABIT")
+  event.preventDefault();
+  const habitDelete = event.target;
+  const habitDeleteID = event.target.id;
+
+    const response = await fetch("/api/habits/" + habitDeleteID, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    document.location.reload();
+};
+
+
 
 // handle checkbox changes
 const onHabitCheckboxChange = (event) => {
@@ -70,9 +94,6 @@ const localDateWithOffset = (offset) => {
 
   // convert the local time zone offset from minutes to milliseconds
   const z = t.getTimezoneOffset() * 60 * 1000;
-
-
-
   
   tLocal = new Date(t - z + // apply timezone shift
     offset * 24 *60* 60 * 1000 // apply day shift
@@ -88,18 +109,18 @@ const localDateWithOffset = (offset) => {
 };
 
 
-
-
-//adding event listener to the new habit form
-document
-  .querySelector('.habit-form')
-  .addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {newHabitHandler}
-    });
-
-
 // add event listener to habit checkboxes
 $(".habit-grid").on("click", ":checkbox", (event) => {
   console.log(event);
   onHabitCheckboxChange(event);
+});
+
+
+document
+  .querySelector(".btn-post-add")
+  .addEventListener("click", newHabitHandler);
+
+
+$(".btn-delete").click((event) => {
+  deleteHabitHandler(event);
 });
