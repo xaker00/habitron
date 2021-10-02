@@ -7,7 +7,7 @@ Repository:
     https://github.com/xaker00/habitron
 
 Deployment:
-    
+    https://habitron-ivs.herokuapp.com/ 
      
 Demo
     <img src="./image/Home.jpg"/>

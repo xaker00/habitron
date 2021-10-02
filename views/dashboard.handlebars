@@ -1,4 +1,5 @@
 <div class="row center overview"><h3 class="grey-text">Overview</h3>
+</div>
   <div class="row center-align card">
     <div class="col l3 m6 s12 card-body">
       <div class="card-content green darken-3 white-text valign-wrapper">
@@ -7,7 +8,7 @@
         </div>
         <div class="card-content">
           <div class="row">
-            <h3 class="card-stats-number">{{habits.length}}</h3>
+            <h3 class="card-stats-number">{{#if habits}} {{habits.length}}{{else}}0{{/if}}</h3>
             <p>Active Habit</p>
           </div>
         </div>
@@ -20,7 +21,7 @@
         </div>
         <div class="card-content">
           <div class="row">
-            <h3 class="card-stats-number">{{Logs.length}}</h3>
+            <h3 class="card-stats-number">{{#if Logs}} {{Logs.length}}{{else}}0{{/if}}</h3>
             <p>Total Entry</p>
           </div>
         </div>
@@ -36,7 +37,7 @@
             <h3 class="card-stats-number">
               {{#if DateCount}} {{DateCount}}{{else}}0{{/if}}
             </h3>
-            <p>Days Track</p>
+            <p>Days Tracked</p>
           </div>
         </div>
       </div>
@@ -58,14 +59,14 @@
     </div>
   </div>
 </div>
-<div class="row center chart"><h3 class="grey-text">History Log</h3>
-  <div class="row center-align card">
+<div class="row center chart"  display= "flex" justify-content="center" align="center"><h3 class="grey-text">History Log</h3></div> 
+  <div class="row center-align card chart">
     <div class="card-chart">
       <canvas id="barChart"></canvas>
     </div>
   </div>
 </div>
-<div class="row center chart"><h3 class="grey-text">My Habit Tracker</h3>
+<div class="row center tracker"><h3 class="grey-text">My Habit Tracker</h3>
   <div class="dashboard-container">
     <div class="block-content">
       {{#each habits}}
