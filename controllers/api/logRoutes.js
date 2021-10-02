@@ -45,6 +45,7 @@ router.post("/", withAuthApi, async (req, res) => {
       // update
       const count = await Log.update(req.body, {
         where: {
+          entry_date: req.body.entry_date,
           habit_id: req.body.habit_id,
           user_id: req.session.userId,
         },
