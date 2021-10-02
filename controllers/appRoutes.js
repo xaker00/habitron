@@ -39,10 +39,10 @@ router.get("/", withAuth, async (req, res) => {
         // console.log(habits);
         // console.log(logs);
 
-        res.render('app', {
-            habits: habits,
-            logs: logs,
-            logged_in: req.session.logged_in,
+        res.render("app", {
+          habits: habits,
+          logs: logs,
+          loggedIn: req.session.loggedIn,
         });
     }catch (err) {
         res.status(500).json(err);
