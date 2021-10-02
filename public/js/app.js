@@ -9,24 +9,18 @@ const onHabitCheckboxChange = (event) => {
   const target = $(event.target);
   const logId = target.prop("id");
   const habitId = target.data("habit-id");
-  const day = +target.data("day") || 0; // get day and convert to number
+  const day = target.data("day"); // || 0; // get day and convert to number
   const checked = target.prop("checked");
-  let status = checked ? "Done" : undefined;
+  let status = checked ? "Done" : "undefined";
 
   let data = {
     habit_id: habitId,
     status: status,
-    entry_date: localDateWithOffset(day),
+    entry_date: day, //localDateWithOffset(day),
   };
 
   console.log("checkbox data", data);
 
-  if (logId) {
-    // habit has a log entry already
-    return;
-  } else {
-    // no log entry for this habit
-  }
 
   $.ajax({
     // The URL for the request
@@ -50,7 +44,6 @@ const onHabitCheckboxChange = (event) => {
     });
 };
 
-
 // Convert date into a local date with day offset
 const localDateWithOffset = (offset) => {
   console.log("offset", offset);
@@ -62,17 +55,11 @@ const localDateWithOffset = (offset) => {
   // convert the local time zone offset from minutes to milliseconds
   const z = t.getTimezoneOffset() * 60 * 1000;
 
-const newHabitHandler = async (event) => {
-  event.preventDefault();
-
-  // Collect values from the login form
-  const habit = document.querySelector(".new-habit").value.trim();
-  console.log(habit);
-
-  
-  tLocal = new Date(t - z + // apply timezone shift
-    offset * 24 *60* 60 * 1000 // apply day shift
-    );
+  tLocal = new Date(
+    t -
+      z + // apply timezone shift
+      offset * 24 * 60 * 60 * 1000 // apply day shift
+  );
   console.log("tLocal", tLocal);
 
   // convert to ISO format string
@@ -82,6 +69,14 @@ const newHabitHandler = async (event) => {
   iso = iso.slice(0, 10);
   return iso;
 };
+
+const newHabitHandler = async (event) => {
+  event.preventDefault();
+
+  // Collect values from the login form
+  const habit = document.querySelector(".new-habit").value.trim();
+  console.log(habit);
+
   if (habit) {
     const response = await fetch("/api/habits", {
       method: "POST",
@@ -105,6 +100,6 @@ const newHabitHandler = async (event) => {
 //     }
 //   });
 
-  document
-    .querySelector(".btn-post-add")
-    .addEventListener("click", newHabitHandler);
+document
+  .querySelector(".btn-post-add")
+  .addEventListener("click", newHabitHandler);

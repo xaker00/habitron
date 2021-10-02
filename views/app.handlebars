@@ -39,66 +39,34 @@
      <table class= "centered">
         <thead>
           <tr>
-              {{#with logs}}
-              <th id="{{entry_date}}">{{ format_date (dateSixDay) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateFiveDay) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateFourDay) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateThreeDay) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateTwoDay) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateYesterday) }}</th>
-              <th id="{{entry_date}}">{{ format_date (dateNow) }}</th>
-              {{/with}}
+
+              <th></th>
+              <th>{{ format_date (dateSixDay) }}</th>
+              <th>{{ format_date (dateFiveDay) }}</th>
+              <th>{{ format_date (dateFourDay) }}</th>
+              <th>{{ format_date (dateThreeDay) }}</th>
+              <th>{{ format_date (dateTwoDay) }}</th>
+              <th>{{ format_date (dateYesterday) }}</th>
+              <th>{{ format_date (dateNow) }}</th>
+
           </tr>
         </thead>
 
         <tbody>
-        {{#each logs}}
-            <form action="#">
+            {{#each log2 as | log |}}
             <tr>
+                <td>{{log.description}}</td>
+                {{#each log.status as | stat |}}
                 <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-6" value="Complete"/>
-                        <span>{{habit.description}}</span>
+                    <label class ="center status-box">
+                        <input type="checkbox" id="{{stat.id}}" data-habit-id="{{log.habit_id}}" data-day="{{stat.entry_date}}" {{stat.status}}/>
+                        <span>&nbsp;</span>
                     </label>
                 </td>
-            <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-5" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label>  
-                </td>
-                <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-4" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label>
-                </td>
-            <td>
-                    <label class ="left checkbox">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-3" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label> 
-                </td>
-                <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-2" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label>
-                </td>
-                <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="-1" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label>  
-                </td>
-                <td>
-                    <label class ="left status-box">
-                        <input type="checkbox" id="{{id}}" data-habitId="{{habit_id}}" data-day="0" value="Complete"/>
-                        <span>{{habit.description}}</span>
-                    </label>
-                </td>
-            </form>     
-        {{/each}}
+                {{/each}}
+            </tr>
+            {{/each}}
+        
           </tr>
         </tbody>
       </table>
