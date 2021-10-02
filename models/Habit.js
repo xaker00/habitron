@@ -14,6 +14,7 @@ Habit.init(
     },
     category: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     description: {
       type: DataTypes.STRING,

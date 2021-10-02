@@ -3,8 +3,10 @@ const { withAuthApi } = require("../../utils/auth");
 const { Habit } = require("../../models");
 const session = require("express-session");
 
+console.log("Start")
 // list all habits for user
 router.get("/", withAuthApi, async (req, res) => {
+  console.log("list all habit ");
   try {
     const dbHabitData = await Habit.findAll({
       where: { user_id: req.session.userId },
@@ -19,7 +21,11 @@ router.get("/", withAuthApi, async (req, res) => {
 // add new habit
 router.post("/", withAuthApi, async (req, res) => {
   try {
-    const dbHabitData = await Habit.create({user_id:req.session.userId ,...req.body});
+    const dbHabitData = await Habit.create({
+      description: req.body.habit,
+      status: "Active",
+      user_id: req.session.userId,
+    });
     res.status(201).json(dbHabitData);
   } catch (err) {
     console.log(err);
@@ -29,9 +35,10 @@ router.post("/", withAuthApi, async (req, res) => {
 
 // edit habit
 router.put("/:id", withAuthApi, async (req, res) => {
+  console.log("run edit habit ");
   try {
     const count = await Habit.update(req.body, {
-      where: { id: req.params.id, userId:req.session.userId },
+      where: { id: req.params.id, userId: req.session.userId },
     });
     if (count === 0) {
       res.status(404).json({ message: "Not found" });
@@ -49,6 +56,7 @@ router.put("/:id", withAuthApi, async (req, res) => {
 
 // delete habit
 router.delete("/:id", withAuthApi, async (req, res) => {
+  console.log("run delete habit ");
   try {
     const count = await Habit.destroy({
       where: { user_id: req.session.userId, id: req.params.id },

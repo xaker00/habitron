@@ -62,7 +62,12 @@ const localDateWithOffset = (offset) => {
   // convert the local time zone offset from minutes to milliseconds
   const z = t.getTimezoneOffset() * 60 * 1000;
 
+const newHabitHandler = async (event) => {
+  event.preventDefault();
 
+  // Collect values from the login form
+  const habit = document.querySelector(".new-habit").value.trim();
+  console.log(habit);
 
   
   tLocal = new Date(t - z + // apply timezone shift
@@ -77,3 +82,29 @@ const localDateWithOffset = (offset) => {
   iso = iso.slice(0, 10);
   return iso;
 };
+  if (habit) {
+    const response = await fetch("/api/habits", {
+      method: "POST",
+      body: JSON.stringify({ habit }),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response);
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+// document
+//   .querySelector(".habit-form")
+//   .addEventListener("keypress", function (e) {
+//     if (e.key === "Enter") {
+//       newHabitHandler;
+//     }
+//   });
+
+  document
+    .querySelector(".btn-post-add")
+    .addEventListener("click", newHabitHandler);
