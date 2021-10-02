@@ -1,4 +1,4 @@
-//adding event listener to 
+//handles the new habit thing
 const newHabitHandler = async (event) => {
     event.preventDefault();
   
@@ -6,25 +6,12 @@ const newHabitHandler = async (event) => {
     const habit = document.querySelector(".new-habit").value.trim();
     console.log(habit);
     
-    const response = await fetch("/api/habitRoutes", {
+    const response = await fetch("/api/habit", {
         method: "POST",
         body: JSON.stringify( { habit } ),
         headers: { "Content-Type": "application/json" },
       });
 };
-
-document
-  .querySelector('.habit-form')
-  .addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {newHabitHandler}
-    });
-
-
-// add event listener to habit checkboxes
-$(".habit-grid").on("click", ":checkbox", (event) => {
-  console.log(event);
-  onHabitCheckboxChange(event);
-});
 
 // handle checkbox changes
 const onHabitCheckboxChange = (event) => {
@@ -99,3 +86,20 @@ const localDateWithOffset = (offset) => {
   iso = iso.slice(0, 10);
   return iso;
 };
+
+
+
+
+//adding event listener to the new habit form
+document
+  .querySelector('.habit-form')
+  .addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {newHabitHandler}
+    });
+
+
+// add event listener to habit checkboxes
+$(".habit-grid").on("click", ":checkbox", (event) => {
+  console.log(event);
+  onHabitCheckboxChange(event);
+});

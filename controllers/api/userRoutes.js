@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
-
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -50,6 +49,9 @@ router.post("/login", async (req, res) => {
       return;
     }
 
+    req.session.loggedIn = true;
+    req.session.userId = dbUserData.id;
+    req.session.tzOffsetMs = +req.body.tzOffsetMs;
 
       req.session.loggedIn = true;
       req.session.userId = dbUserData.id;
