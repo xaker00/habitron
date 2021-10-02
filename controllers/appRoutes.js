@@ -39,13 +39,13 @@ router.get("/", withAuth, async (req, res) => {
         const log2 = await Log.getHistory(req.session.userId, req.clientDate, 7);
 
 
-        console.log(habits);
-        console.log(logs);
+        // console.log(habits);
+        // console.log(logs);
 
-        res.render('app', {
-            habits: habits,
-            logs: logs,
-            logged_in: req.session.logged_in,
+        res.render("app", {
+          habits: habits,
+          logs: logs,
+          loggedIn: req.session.loggedIn,
         });
     }catch (err) {
         res.status(500).json(err.message);

@@ -6,42 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/css/styles.css" rel="stylesheet" />
-
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
-
+    <link rel="stylesheet" href="/css/styles.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
 
     <title>HABITRON</title>
 </head>
-
-    <header>
+<header>
         <nav class="menu">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">HABITRON: Habit Tracker</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/">Home</a></li>
+                    {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
                     <li><a href="/app">Habit Tracker</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
                     {{#if loggedIn}}
-                    <li><a href={{!-- Logout Page? --}}>Logout</a></li>
+                        <li><a href="/" id="logout">Logout</a></li>
                     {{else}}
-                    <li><a href="/login">Login</a></li>
+                        <li><a href="/login">Login</a></li>
                     {{/if}}
                 </ul>
             </div>
         </nav>
-    </header>
-
+</header>
 <body>
 {{{body}}}
 </body>
-</html>
-
 <footer class="footer">
     Created by: Ilya, Victor, and Steven
 </footer>
+</html>
+{{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+{{/if}}
