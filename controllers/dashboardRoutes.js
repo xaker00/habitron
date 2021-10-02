@@ -65,7 +65,7 @@ router.get("/", withAuth, async (req, res) => {
       habits,
       Logs,
       DateCount,
-      // ConsecutiveCount,
+       ConsecutiveCount,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
