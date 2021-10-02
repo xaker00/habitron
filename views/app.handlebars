@@ -17,11 +17,11 @@
     {{!-- {{#if habits.length}} --}}
     <div class="habit-list">
         <h4 class="center-align">Active Habits:</h4>
-        {{#each logs}}
+        {{#each habits}}
         <ul class="habit-description">
-            <li>{{habit.description}}
+            <li>{{description}}
             <label class ="right">
-                <input type="checkbox" id="{{habit.description}}"/>
+                <input type="checkbox" id="{{description}}"/>
                 <span>Active</span>
             </label>
             </li>
