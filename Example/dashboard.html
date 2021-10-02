@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="../public/css/style.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>HABITRON</title>
+</head>
+<body>
+ <div class="dashboard-container">
+        <div class="dashboard-header center-align ">
+            <h3>My Habit Tracker</h3>
+        </div>
+      <div class="card dashboard-content">
+            <div class="card-body dashboard-row">
+                <div class="card-content dashboard-category  {{category}}">
+                    <!-- <a tooltip="Category" class="category">Exercise</a> -->
+                </div>
+                <div class="card-content habit-title row">
+                    <h4>Running</h4>
+                    <h5>Run for 60 mins every day</h5>
+                </div>
+                <div class="card-content habit-progress">
+                    <div class="habit-bar">
+                        <div class="habit-track">
+                            <span class="status-text">10%</span>
+                            <div class="status-fill" style="width:10%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-contenthabit-progress"><a tooltip="Completion Rate ( Completed day / Total day )" class="tooltip"> <small>( {{completed_day}} / {{total_day}} )</small></a></div>
+            </div>
+        </div>
+</div>
+</body>

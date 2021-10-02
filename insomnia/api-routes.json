@@ -1,0 +1,363 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-09-25T21:20:34.178Z",
+  "__export_source": "insomnia.desktop.app:v2021.5.3",
+  "resources": [
+    {
+      "_id": "req_133b86dcd01c49cbabe0bc34638fb94f",
+      "parentId": "fld_15953169f11b4e33b3439a140c3a3ad8",
+      "modified": 1632600778879,
+      "created": 1632594370647,
+      "url": "{{ _.baseURL }}/api/log",
+      "name": "GET user's log entries",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1632594370647,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_15953169f11b4e33b3439a140c3a3ad8",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632594349711,
+      "created": 1632594349711,
+      "name": "log",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1632594349711,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_30226ce682be488980115a95b945791d",
+      "parentId": null,
+      "modified": 1632593381037,
+      "created": 1632593381037,
+      "name": "habitron",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_4c271128d8f741ab81919fd2c9af86e7",
+      "parentId": "fld_15953169f11b4e33b3439a140c3a3ad8",
+      "modified": 1632604663516,
+      "created": 1632600828769,
+      "url": "{{ _.baseURL }}/api/log/",
+      "name": "CREATE log entry",
+      "description": "This route will add or update. Update happens if new entry matches day and `habit_id`.",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"habit_id\":  7,\n\t\"status\": \"done\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_87b7fc7330434c2fbd929e0fcf5a5880"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1632452681667.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_da8536350517466dae1598161258c078",
+      "parentId": "fld_19d106fd7170481c96092cbdf8408265",
+      "modified": 1632600710130,
+      "created": 1632596256430,
+      "url": "{{ _.baseURL }}/api/users",
+      "name": "CREATE new user",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"insomnia test user\",\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password12345\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_151604b69e5d4682ab2ee04f141d45d8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1632596256430,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_19d106fd7170481c96092cbdf8408265",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632594340694,
+      "created": 1632594340694,
+      "name": "users",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1632594340694,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_c4e938dbd07c443bb6359cf4309435e0",
+      "parentId": "fld_19d106fd7170481c96092cbdf8408265",
+      "modified": 1632600716226,
+      "created": 1632596441725,
+      "url": "{{ _.baseURL }}/api/users/login",
+      "name": "login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"test@example.com\",\n\t\"password\": \"password12345\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_151604b69e5d4682ab2ee04f141d45d8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1632595313538.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_391bc8912c5542ef880a8330f29d8cc7",
+      "parentId": "fld_19d106fd7170481c96092cbdf8408265",
+      "modified": 1632600719935,
+      "created": 1632599538537,
+      "url": "{{ _.baseURL }}/api/users/logout",
+      "name": "logout",
+      "description": "",
+      "method": "POST",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1632594842092.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_90cc44a26f044ca5966a73747be7440a",
+      "parentId": "fld_8d1bdc930cf948f29c96d6f993b219d8",
+      "modified": 1632600790663,
+      "created": 1632594587020,
+      "url": "{{ _.baseURL }}/api/habits",
+      "name": "GET user's habits",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1632310992687.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_8d1bdc930cf948f29c96d6f993b219d8",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632594334373,
+      "created": 1632594334373,
+      "name": "habits",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1632594334373,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_84f6a6f8afdc49cba43b33b0db967f2c",
+      "parentId": "fld_8d1bdc930cf948f29c96d6f993b219d8",
+      "modified": 1632600727658,
+      "created": 1632594732044,
+      "url": "{{ _.baseURL }}/api/habits/4",
+      "name": "EDIT habit",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"description\": \"Wake up at 6AM\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eea52f494d0433f8fc336356d9cca75"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1632169303707.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a4f9c942d89b45b6a434090bbeaf5290",
+      "parentId": "fld_8d1bdc930cf948f29c96d6f993b219d8",
+      "modified": 1632600731995,
+      "created": 1632595960949,
+      "url": "{{ _.baseURL }}/api/habits/",
+      "name": "CREATE new habit",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": " {\n\t\t\"category\": \"Rest & Stress\",\n    \"description\": \"go to sleep before 12AM\",\n    \"status\": \"Active\" \n }"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_0eea52f494d0433f8fc336356d9cca75"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1632133881462.8125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a0aed28ecc9442a8be8c45ac339f7b5a",
+      "parentId": "fld_8d1bdc930cf948f29c96d6f993b219d8",
+      "modified": 1632600735829,
+      "created": 1632595220474,
+      "url": "{{ _.baseURL }}/api/habits/9",
+      "name": "DELETE habit",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1632098459217.875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_5609ca5c3fa8100190951fac7c89b409a71051eb",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632593381050,
+      "created": 1632593381050,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1632593381050,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_5609ca5c3fa8100190951fac7c89b409a71051eb",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632599640943,
+      "created": 1632593381054,
+      "name": "Default Jar",
+      "cookies": [
+        {
+          "key": "connect.sid",
+          "value": "s%3Ag1Xzplt9N_HJbBgj1BeCMcBAgyqVfaXr.PQsjj9s0Xl8pqSu7rokvSYhgyEGqx5%2FNdFIqjmr1LFI",
+          "domain": "127.0.0.1",
+          "path": "/",
+          "httpOnly": true,
+          "hostOnly": true,
+          "creation": "2021-09-25T18:28:18.526Z",
+          "lastAccessed": "2021-09-25T19:54:00.942Z",
+          "id": "46704891243530855"
+        }
+      ],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_9dbd6dd875bc4a29b507bbef715a2407",
+      "parentId": "wrk_30226ce682be488980115a95b945791d",
+      "modified": 1632593381043,
+      "created": 1632593381043,
+      "fileName": "habitron",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_0b7599d5dcbd46a98c0e40291d77b0ae",
+      "parentId": "env_5609ca5c3fa8100190951fac7c89b409a71051eb",
+      "modified": 1632600700475,
+      "created": 1632594389016,
+      "name": "Habitron-local",
+      "data": { "baseURL": "http://127.0.0.1:3001" },
+      "dataPropertyOrder": { "&": ["baseURL"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1632594389016,
+      "_type": "environment"
+    }
+  ]
+}

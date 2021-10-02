@@ -1,0 +1,29 @@
+{{!-- This will be the file to add/update/edit habits that the user wants to track --}}
+<div class = "row">
+    <div class = "new-habit-spot">
+        <h3>Add A New Habit</h3>
+
+        <form class="form habit-form">
+            {{!-- <div class="form-group">
+                <label for="habit-cateogry">Category:</label>
+                <input class="form-input" type="text" id="habit-category" />
+            </div> --}}
+            <div class="form-group">
+                <label for="new-habit">Habit:</label>
+                <input class="form-input" type="text" id="habit" />
+            </div>
+        </form>
+    </div>
+
+    {{#if habit.length}}
+    <div class="habit-list">
+        <h3>Active Habits:</h3>
+        {{#each habits as |habit|}}
+        <input type="checkbox">
+        <label for="active-habit">Active</label>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{!-- {{ DO WE NEED A HABIT.JS?}} --}}
+    {{!-- <script src=""></script> --}} 

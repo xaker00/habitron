@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
+    <link rel="stylesheet" href="/css/styles.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+
+    <title>HABITRON</title>
+</head>
+<header>
+        <nav class="menu">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">HABITRON<span class="hide-on-small-only">: Habit Tracker</span></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
+                    <li><a href="/app">Habit Tracker</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    {{#if loggedIn}}
+                        <li><a href="/" id="logout">Logout</a></li>
+                    {{else}}
+                        <li><a href="/login">Login</a></li>
+                    {{/if}}
+                </ul>
+                <ul class="sidenav" id="mobile-demo">
+                    {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
+                    <li><a href="/app">Habit Tracker</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    {{#if loggedIn}}
+                        <li><a href="/" id="logout">Logout</a></li>
+                    {{else}}
+                        <li><a href="/login">Login</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </nav>
+</header>
+<body>
+{{{body}}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      const instances = M.Sidenav.init(elems);
+    });
+</script>
+
+{{#if loggedIn}}
+      <script src="/js/logout.js"></script>
+{{/if}}
+
+<footer >
+    Created by: Ilya, Victor, and Steven
+</footer>
+</body>
+
+</html>
