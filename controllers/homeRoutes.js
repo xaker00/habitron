@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 // landing page
 router.get("/", async (req, res) => {
-  res.render("home", {page:'home'});
+  res.render("home", { page: "home", loggedIn: req.session.loggedIn });
 });
 
 // App (protected route)
@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 // login page
 router.get("/login", async (req, res) => {
-    res.render('login', {page:'login'});
+    res.render("login", { page: "login", loggedIn: req.session.loggedIn });
   });
 
 module.exports = router;

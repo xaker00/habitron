@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
-
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -10,6 +9,7 @@ router.post("/", async (req, res) => {
     // set the session flag
     req.session.loggedIn = true;
     req.session.userId = dbUserData.id;
+    req.session.tzOffsetMs = +req.body.tzOffsetMs;
     // reply to client
     res.status(200).json(dbUserData);
   } catch (err) {
@@ -49,17 +49,13 @@ router.post("/login", async (req, res) => {
       return;
     }
 
+    req.session.loggedIn = true;
+    req.session.userId = dbUserData.id;
+    req.session.tzOffsetMs = +req.body.tzOffsetMs;
 
-      req.session.save(() => {
-        req.session.userId = userData.id;
-        req.session.loggedIn = true;
-        res.json({ user: userData, message: "You are now logged in!" });
-      });
-
-    console.log(req.session.loggedIn);
-      res
-        .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+    res
+      .status(200)
+      .json({ user: dbUserData, message: "You are now logged in!" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

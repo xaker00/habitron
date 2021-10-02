@@ -21,7 +21,7 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">HABITRON: Habit Tracker</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/">Home</a></li>
+                    {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
                     <li><a href="/app">Habit Tracker</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
                     {{#if loggedIn}}
@@ -43,6 +43,6 @@
     Created by: Ilya, Victor, and Steven
 </footer>
 
- {{#if logged_in}}
+ {{#if loggedIn}}
       <script src="/js/logout.js"></script>
-    {{/if}}
+{{/if}}

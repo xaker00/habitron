@@ -11,10 +11,7 @@ const GetHabitsList = async () => {
     const entry_date = [];
     const entry_count = [];
     for (var record in data) {
-      console.log(data[record].entry_date);
-      entry_date.push({ entry_date: data[record].entry_date });
-      entry_count.push({ entry_date: data[record].records });
-      addData(myChart, data[record].entry_date, data[record].records);
+       addData(myChart, data[record].entry_date, data[record].records);
     }
 
      addData(myChart, entry_date, entry_count)

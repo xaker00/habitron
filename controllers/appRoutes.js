@@ -36,8 +36,8 @@ router.get("/", withAuth, async (req, res) => {
         const logs = logData.map((log) => log.get({ plain:true }));
 
 
-        console.log(habits);
-        console.log(logs);
+        // console.log(habits);
+        // console.log(logs);
 
         res.render('app', {
             habits: habits,
