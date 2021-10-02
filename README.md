@@ -10,7 +10,7 @@ Deployment:
     
      
 Demo
-    photo go here
+    <img src="./image/Home.jpg"/>
 
 ## Table of Contents
 1. [Installation](#installation)
@@ -35,7 +35,7 @@ Demo
    1. Open terminal
    2. Run 'npm start'
    3. Open http://localhost:3001/ from browser
-   
+   <img src="./image/Use.jpg"/>
    
 ## Credits
     Ilya Spivakov, Steven Chung and Victor Lam
