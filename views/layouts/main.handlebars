@@ -19,8 +19,19 @@
 <header>
         <nav class="menu">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">HABITRON: Habit Tracker</a>
+                <a href="#" class="brand-logo">HABITRON<span class="hide-on-small-only">: Habit Tracker</span></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
+                    <li><a href="/app">Habit Tracker</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    {{#if loggedIn}}
+                        <li><a href="/" id="logout">Logout</a></li>
+                    {{else}}
+                        <li><a href="/login">Login</a></li>
+                    {{/if}}
+                </ul>
+                <ul class="sidenav" id="mobile-demo">
                     {{#if loggedIn}}{{else}} <li><a href="/">Home</a></li>{{/if}}
                     <li><a href="/app">Habit Tracker</a></li>
                     <li><a href="/dashboard">Dashboard</a></li>
@@ -37,7 +48,13 @@
 {{{body}}}
 </body>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      const instances = M.Sidenav.init(elems);
+    });
+</script>
 
 <footer class="footer">
     Created by: Ilya, Victor, and Steven
