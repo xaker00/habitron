@@ -30,7 +30,7 @@ router.get("/", withAuth, async (req, res) => {
     });
     // count log date
     const DateCountData = await sequelize.query(
-      `SELECT count(distinct date(entry_date)) as count FROM log where user_id = ? `,
+      `SELECT count(distinct date(entry_date)) as count FROM log where user_id = ? and status='Done'`,
       { replacements: [req.session.userId] }
     );
     // count consecutive date
@@ -39,7 +39,7 @@ router.get("/", withAuth, async (req, res) => {
       SELECT COUNT(*) as CNT, min(dt) start_date, max(dt) as end_date
       FROM (SELECT DATE(entry_date) dt, DATE_ADD(DATE(entry_date), INTERVAL - ROW_NUMBER() OVER (ORDER BY entry_date) DAY) as col
       FROM log 
-      where user_id=?
+      where user_id=? and status='Done'
       GROUP BY entry_date 
       ORDER BY entry_date) B
       GROUP BY col
